@@ -11,6 +11,7 @@ export default function App() {
       <h1>Apna time ayega </h1>
       <h1>Apna time ayega </h1>
       <h1>Apna time ayega </h1>
+      <span> aapna time to aata rahe ga</span>
     </div>
   );
 }
