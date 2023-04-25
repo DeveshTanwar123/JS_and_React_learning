@@ -1,24 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import {api} from '../modules/endpoints'
 
-class StudentClass {
-  constructor(display, value) {
-    this.display = display;
-    this.value = value;
-  }
-}
-
-const classList = [
-  new StudentClass('I', 1),
-  new StudentClass('II', 2),
-  new StudentClass('III', 3),
-  new StudentClass('IV', 4),
-  new StudentClass('V', 5),
-];
 
 function Forms() {
   const [name, setName] = useState('');
   const [fullName, setFullName] = useState();
   const [Subjects, setSubjects] = useState('sakshi');
+
+  const [classList, setClassList] = useState([])
+
+  useEffect( () => {
+   api.students.getClassList()
+    .then((list) =>  {
+      setClassList(list)
+    })
+  }, [])
+
 
   const inputEvent = (event) => {
     console.log(event.target.value);
@@ -49,7 +46,7 @@ function Forms() {
           <select id="class" name="class">
             <option value="">Select class</option>
             {classList.map((item) => (
-              <option value={item.value}> {item.display} </option>
+              <option value={item.id}> {item.display} </option>
             ))}
           </select>
           <br />
