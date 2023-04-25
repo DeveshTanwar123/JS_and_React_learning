@@ -1,5 +1,20 @@
 import React, { useState } from 'react';
 
+class StudentClass {
+  constructor(display, value) {
+    this.display = display;
+    this.value = value;
+  }
+}
+
+const classList = [
+  new StudentClass('I', 1),
+  new StudentClass('II', 2),
+  new StudentClass('III', 3),
+  new StudentClass('IV', 4),
+  new StudentClass('V', 5),
+];
+
 function Forms() {
   const [name, setName] = useState('');
   const [fullName, setFullName] = useState();
@@ -32,12 +47,10 @@ function Forms() {
         <label>
           Student class:
           <select id="class" name="class">
-            <option value="I">class</option>
-            <option value="I">I</option>
-            <option value="II">II</option>
-            <option value="III">III</option>
-            <option value="IV">IV</option>
-            <option value="V">V</option>
+            <option value="">Select class</option>
+            {classList.map((item) => (
+              <option value={item.value}> {item.display} </option>
+            ))}
           </select>
           <br />
           <br />
