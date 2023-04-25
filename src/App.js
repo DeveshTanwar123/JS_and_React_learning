@@ -1,12 +1,10 @@
 import React from 'react';
 import './style.css';
-
+import Forms from './Component/Forms';
 export default function App() {
   return (
     <div>
-      <h1>Hello Devesh</h1>
-      <p>Vimal tujhe se naho payega</p>
-      <h1> apna time </h1>
+      <Forms />
     </div>
   );
 }
