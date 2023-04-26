@@ -56,7 +56,7 @@ function Forms() {
         </label>
         <label>
           Student class:
-          <select id="class" name="class">
+          <select id="studentClass" name="studnetClass">
             <option value="">Select class</option>
             {classList.map((item) => (
               <option value={item.id}> {item.display} </option>
@@ -89,7 +89,7 @@ function Forms() {
           <br />
         </label>
       </form>
-      <button onClick={onSubmit}>click me</button>
+      <button onClick={onSubmit}>Create data</button>
       <h1>Welcome{fullName}</h1>
     </div>
   );
