@@ -1,6 +1,7 @@
 import { endPoints } from '../endpoints';
 import { CLASS_LIST } from './dummy-data';
 import { SECTION_LIST } from './dummy-data';
+import { SUBJECTS_LIST } from './dummy-data';
 
 class Students {
   getClassList() {
@@ -9,6 +10,10 @@ class Students {
 
   getSectionList() {
     return endPoints.fetch('/getSectionListUrl', SECTION_LIST);
+  }
+
+  getSubjectsList() {
+    return endPoints.fetch('/getSubjectsListUrl', SUBJECTS_LIST);
   }
 }
 

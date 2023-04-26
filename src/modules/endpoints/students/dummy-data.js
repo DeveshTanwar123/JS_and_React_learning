@@ -12,6 +12,13 @@ class StudentSection {
   }
 }
 
+class StudentSubjects {
+  constructor(display, id) {
+    this.display = display;
+    this.id = id;
+  }
+}
+
 export const CLASS_LIST = [
   new StudentClass('I', 1),
   new StudentClass('II', 2),
@@ -26,4 +33,12 @@ export const SECTION_LIST = [
   new StudentSection('C', 3),
   new StudentSection('D', 4),
   new StudentSection('E', 5),
+];
+
+export const SUBJECTS_LIST = [
+  new StudentSubjects('Hindi', 1),
+  new StudentSubjects('English', 2),
+  new StudentSubjects('Maths', 3),
+  new StudentSubjects('Science', 4),
+  new StudentSubjects('Social Science', 5),
 ];

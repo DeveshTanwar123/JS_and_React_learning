@@ -9,6 +9,8 @@ function Forms() {
   const [classList, setClassList] = useState([]);
   //list of section//
   const [sectionList, setSectionList] = useState([]);
+  //list of Subjects//
+  const [subjectsList, setSubjectsList] = useState([]);
 
   useEffect(() => {
     api.students.getClassList().then((list) => {
@@ -19,6 +21,12 @@ function Forms() {
   useEffect(() => {
     api.students.getSectionList().then((list) => {
       setSectionList(list);
+    });
+  }, []);
+  //list of subjects//
+  useEffect(() => {
+    api.students.getSubjectsList().then((list) => {
+      setSubjectsList(list);
     });
   }, []);
 
@@ -59,20 +67,11 @@ function Forms() {
         </label>
         <label>
           Student subjects:
-          <select
-            value={Subjects}
-            id="Subjects"
-            name="Subjects"
-            onChange={(e) => setSubjects(e.target.value)}
-          >
-            <h1>{Subjects}</h1>
-            <h1>{Subjects}</h1>
-            <option value="">subject</option>
-            <option value="English">English</option>
-            <h1>{Subjects}</h1>
-            <option value="Maths">Maths</option>
-            <option value="Science">Science</option>
-            <option value="Hindi">Hindi</option>
+          <select id="subjects" name="subjects">
+            <option value="">Select subjects</option>
+            {subjectsList.map((item) => (
+              <option value={item.id}> {item.display} </option>
+            ))}
           </select>
           <br />
           <br />
