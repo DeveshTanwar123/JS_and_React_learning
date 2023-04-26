@@ -43,7 +43,7 @@ function Forms() {
     setSubjects('sakshi');
   };
 
-  const onChangeStudentClass = (e) => {
+  const onChangeStudentClass1 = (e) => {
     setSelectedSlass(e.target.value);
   };
 
@@ -67,7 +67,7 @@ function Forms() {
             id="studentClass"
             name="studnetClass"
             value={selectedClass}
-            onChange={onChangeStudentClass}
+            onChange={onChangeStudentClass1}
           >
             <option value="">Select class</option>
             {classList.map((item) => (
