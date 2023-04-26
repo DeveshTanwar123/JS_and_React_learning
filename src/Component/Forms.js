@@ -3,6 +3,8 @@ import { api } from '../modules/endpoints';
 
 function Forms() {
   const [name, setName] = useState('');
+  const [selectedClass, setSelectedSlass] = useState();
+
   const [fullName, setFullName] = useState();
   const [Subjects, setSubjects] = useState('sakshi');
 
@@ -40,6 +42,11 @@ function Forms() {
   const handleChange = (e) => {
     setSubjects('sakshi');
   };
+
+  const onChangeStudentClass = (e) => {
+    setSelectedSlass(event.target.value);
+  };
+
   return (
     <div className="App">
       <form>
@@ -56,7 +63,12 @@ function Forms() {
         </label>
         <label>
           Student class:
-          <select id="studentClass" name="studnetClass">
+          <select
+            id="studentClass"
+            name="studnetClass"
+            value={selectedClass}
+            onChange={onChangeStudentClass}
+          >
             <option value="">Select class</option>
             {classList.map((item) => (
               <option value={item.id}> {item.display} </option>
