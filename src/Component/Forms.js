@@ -5,7 +5,7 @@ function Forms() {
   const [name, setName] = useState('');
   const [fullName, setFullName] = useState();
   const [Subjects, setSubjects] = useState('sakshi');
-
+  //class//
   const [classList, setClassList] = useState([]);
   //list of section//
   const [sectionList, setSectionList] = useState([]);
@@ -30,7 +30,7 @@ function Forms() {
     });
   }, []);
 
-  const inputEvent = (event) => {
+  const onChangeStudentName = (event) => {
     console.log(event.target.value);
     setName(event.target.value);
   };
@@ -48,7 +48,7 @@ function Forms() {
           <input
             type="Text"
             placeholder="Enter the Name"
-            onChange={inputEvent}
+            onChange={onChangeStudentName}
             value={name}
           />
           <br />
@@ -56,7 +56,7 @@ function Forms() {
         </label>
         <label>
           Student class:
-          <select id="studentClass" name="studnetClass">
+          <select id="studentClass" name="studentClass">
             <option value="">Select class</option>
             {classList.map((item) => (
               <option value={item.id}> {item.display} </option>
@@ -89,7 +89,7 @@ function Forms() {
           <br />
         </label>
       </form>
-      <button onClick={onSubmit}>Create data</button>
+      <button onClick={onSubmit}>Create </button>
       <h1>Welcome{fullName}</h1>
     </div>
   );
