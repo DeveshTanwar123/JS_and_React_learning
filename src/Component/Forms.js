@@ -1,21 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import {api} from '../modules/endpoints'
-
+import { api } from '../modules/endpoints';
 
 function Forms() {
   const [name, setName] = useState('');
   const [fullName, setFullName] = useState();
   const [Subjects, setSubjects] = useState('sakshi');
 
-  const [classList, setClassList] = useState([])
+  const [classList, setClassList] = useState([]);
+  //list of section//
+  const [sectionList, setSectionList] = useState([]);
 
-  useEffect( () => {
-   api.students.getClassList()
-    .then((list) =>  {
-      setClassList(list)
-    })
-  }, [])
+  useEffect(() => {
+    api.students.getClassList().then((list) => {
+      setClassList(list);
+    });
+  }, []);
 
+  useEffect(() => {
+    api.students.getSectionList().then((list) => {
+      setSectionList(list);
+    });
+  }, []);
 
   const inputEvent = (event) => {
     console.log(event.target.value);
@@ -75,12 +80,11 @@ function Forms() {
 
         <label>
           Student section:
-          <select id="Section" name="Section">
-            <option value="">Section</option>
-            <option value="A">A</option>
-            <option value="B">B</option>
-            <option value="C">C</option>
-            <option value="D">D</option>
+          <select id="section" name="section">
+            <option value="">Select section</option>
+            {sectionList.map((item) => (
+              <option value={item.id}> {item.display} </option>
+            ))}
           </select>
           <br />
           <br />
