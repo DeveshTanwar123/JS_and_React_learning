@@ -44,7 +44,7 @@ function Forms() {
   };
 
   const onChangeStudentClass = (e) => {
-    setSelectedSlass(event.target.value);
+    setSelectedSlass(e.target.value);
   };
 
   return (
