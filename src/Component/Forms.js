@@ -5,6 +5,12 @@ function Forms() {
   const [name, setName] = useState('');
   const [fullName, setFullName] = useState();
   const [Subjects, setSubjects] = useState('sakshi');
+  const [selectedClass, setSelectedSlass] = useState();
+
+  const onChangeStudentClass1 = (e) => {
+    setSelectedSlass(e.target.value);
+  };
+
   //class//
   const [classList, setClassList] = useState([]);
   //list of section//
@@ -56,7 +62,13 @@ function Forms() {
         </label>
         <label>
           Student class:
-          <select id="studentClass" name="studentClass">
+          <select
+            id="studentClass"
+            name="studnetClass"
+            value={selectedClass}
+            onChange={onChangeStudentClass1}
+          >
+            {' '}
             <option value="">Select class</option>
             {classList.map((item) => (
               <option value={item.id}> {item.display} </option>
