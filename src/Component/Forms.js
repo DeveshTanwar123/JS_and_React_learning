@@ -53,18 +53,30 @@ function Forms() {
     setName(event.target.value);
   };
 
+  const validateForm = () => {
+    if (!name) {
+      return false;
+    }
+
+    return true;
+  };
+
   const onSubmit = () => {
-    const studentDetails = {
-      name: name,
-      class: selectedClass,
-      subjects: selectedSubjects,
-      section: selectedSection,
-    };
-    setName('');
-    setSelectedSlass('');
-    setSelectedSection('');
-    setSelectedSubjects('');
-    api.students.createStudent(studentDetails);
+    const isFormValid = validateForm();
+
+    if (isFormValid) {
+      const studentDetails = {
+        name: name,
+        class: selectedClass,
+        subjects: selectedSubjects,
+        section: selectedSection,
+      };
+      setName('');
+      setSelectedSlass('');
+      setSelectedSection('');
+      setSelectedSubjects('');
+      api.students.createStudent(studentDetails);
+    }
 
     setFullName(name);
   };
