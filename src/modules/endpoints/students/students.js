@@ -4,6 +4,7 @@ import { SECTION_LIST } from './dummy-data';
 import { SUBJECTS_LIST } from './dummy-data';
 
 class Students {
+  studentList = [];
   getClassList() {
     return endPoints.fetch('/getClassListUrl', CLASS_LIST);
   }
@@ -17,7 +18,8 @@ class Students {
   }
 
   createStudent(studentDetials) {
-    console.log(studentDetials);
+    this.studentList.push(studentDetials);
+    console.log(studentList);
   }
 }
 
