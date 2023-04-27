@@ -55,6 +55,9 @@ function Forms() {
   const onSubmit = () => {
     const studentDetails = {
       name: name,
+      class: selectedClass,
+      subjects: selectedSubjects,
+      section: selectedSection,
     };
 
     console.log(studentDetails);
