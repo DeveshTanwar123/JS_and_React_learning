@@ -52,6 +52,7 @@ function Forms() {
     console.log(event.target.value);
     setName(event.target.value);
   };
+
   const onSubmit = () => {
     const studentDetails = {
       name: name,
@@ -59,7 +60,7 @@ function Forms() {
       subjects: selectedSubjects,
       section: selectedSection,
     };
-
+    setName('');
     api.students.createStudent(studentDetails);
 
     setFullName(name);
@@ -87,7 +88,6 @@ function Forms() {
             value={selectedClass}
             onChange={onChangeStudentClass1}
           >
-            {' '}
             <option value="">Select class</option>
             {classList.map((item) => (
               <option value={item.id}> {item.display} </option>
