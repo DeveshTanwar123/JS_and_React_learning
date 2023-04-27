@@ -15,6 +15,10 @@ class Students {
   getSubjectsList() {
     return endPoints.fetch('/getSubjectsListUrl', SUBJECTS_LIST);
   }
+
+  createStudent(studentDetials) {
+    console.log(studentDetials);
+  }
 }
 
 export const students = new Students();

@@ -60,7 +60,7 @@ function Forms() {
       section: selectedSection,
     };
 
-    console.log(studentDetails);
+    api.students.createStudent(studentDetails);
 
     setFullName(name);
   };
