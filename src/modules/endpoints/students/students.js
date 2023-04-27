@@ -19,7 +19,7 @@ class Students {
 
   createStudent(studentDetials) {
     this.studentList.push(studentDetials);
-    console.log(studentList);
+    console.log(this.studentList);
   }
 }
 
