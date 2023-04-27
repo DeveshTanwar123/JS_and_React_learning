@@ -61,6 +61,9 @@ function Forms() {
       section: selectedSection,
     };
     setName('');
+    setSelectedSlass('');
+    setSelectedSection('');
+    setSelectedSubjects('');
     api.students.createStudent(studentDetails);
 
     setFullName(name);
