@@ -53,6 +53,12 @@ function Forms() {
     setName(event.target.value);
   };
   const onSubmit = () => {
+    const studentDetails = {
+      name: name,
+    };
+
+    console.log(studentDetails);
+
     setFullName(name);
   };
 
