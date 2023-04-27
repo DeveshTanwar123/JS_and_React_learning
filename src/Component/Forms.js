@@ -2,13 +2,25 @@ import React, { useEffect, useState } from 'react';
 import { api } from '../modules/endpoints';
 
 function Forms() {
-  const [name, setName] = useState('');
+  const [name, setName] = useState('Devesh');
   const [fullName, setFullName] = useState();
-  const [Subjects, setSubjects] = useState('sakshi');
-  const [selectedClass, setSelectedSlass] = useState();
+  //event use  in class selection//
+  const [selectedClass, setSelectedSlass] = useState(4);
+  //use event in section//
+  const [selectedSection, setSelectedSection] = useState(2);
+  //use event in Subjects//
+  const [selectedSubjects, setSelectedSubjects] = useState(1);
 
   const onChangeStudentClass1 = (e) => {
     setSelectedSlass(e.target.value);
+  };
+
+  const onChangeStudentSection = (e) => {
+    setSelectedSection(e.target.value);
+  };
+
+  const onChangeStudentSubjects = (e) => {
+    setSelectedSubjects(e.target.value);
   };
 
   //class//
@@ -43,9 +55,7 @@ function Forms() {
   const onSubmit = () => {
     setFullName(name);
   };
-  const handleChange = (e) => {
-    setSubjects('sakshi');
-  };
+
   return (
     <div className="App">
       <form>
@@ -79,7 +89,12 @@ function Forms() {
         </label>
         <label>
           Student subjects:
-          <select id="subjects" name="subjects">
+          <select
+            id="subjects"
+            name="subjects"
+            value={selectedSubjects}
+            onChange={onChangeStudentSubjects}
+          >
             <option value="">Select subjects</option>
             {subjectsList.map((item) => (
               <option value={item.id}> {item.display} </option>
@@ -91,7 +106,12 @@ function Forms() {
 
         <label>
           Student section:
-          <select id="section" name="section">
+          <select
+            id="studentSection"
+            name="StudentSection"
+            value={selectedSection}
+            onChange={onChangeStudentSection}
+          >
             <option value="">Select section</option>
             {sectionList.map((item) => (
               <option value={item.id}> {item.display} </option>
