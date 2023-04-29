@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { api } from '../modules/endpoints';
+import { Loader } from '../modules/components';
 
 function Forms() {
   const [name, setName] = useState('Devesh');
   const [fullName, setFullName] = useState();
   //event use  in class selection//
   const [selectedClass, setSelectedSlass] = useState(4);
+  const [classLoader, setClassLoader] = useState();
+  const [subjectsLoader, setSubjectsLoader] = useState();
+  const [sectionLoader, setSectionLoader] = useState();
+  const [creatingStudentLoader, setCreatingStudentLoader] = useState();
+
   //use event in section//
   const [selectedSection, setSelectedSection] = useState(2);
   //use event in Subjects//
@@ -31,19 +37,25 @@ function Forms() {
   const [subjectsList, setSubjectsList] = useState([]);
 
   useEffect(() => {
+    setClassLoader(true);
     api.students.getClassList().then((list) => {
+      setClassLoader(false);
       setClassList(list);
     });
   }, []);
 
   useEffect(() => {
+    setSectionLoader(true);
     api.students.getSectionList().then((list) => {
+      setSectionLoader(false);
       setSectionList(list);
     });
   }, []);
   //list of subjects//
   useEffect(() => {
+    setSubjectsLoader(true);
     api.students.getSubjectsList().then((list) => {
+      setSubjectsLoader(false);
       setSubjectsList(list);
     });
   }, []);
@@ -62,6 +74,7 @@ function Forms() {
   };
 
   const onSubmit = () => {
+    debugger;
     const isFormValid = validateForm();
 
     if (isFormValid) {
@@ -71,11 +84,15 @@ function Forms() {
         subjects: selectedSubjects,
         section: selectedSection,
       };
-      setName('');
-      setSelectedSlass('');
-      setSelectedSection('');
-      setSelectedSubjects('');
-      api.students.createStudent(studentDetails);
+
+      setCreatingStudentLoader(true);
+      api.students.createStudent(studentDetails).then((list) => {
+        setName('');
+        setSelectedSlass('');
+        setSelectedSection('');
+        setSelectedSubjects('');
+        setCreatingStudentLoader(false);
+      });
     }
 
     setFullName(name);
@@ -108,6 +125,7 @@ function Forms() {
               <option value={item.id}> {item.display} </option>
             ))}
           </select>
+          <Loader isLoading={classLoader} />
           <br />
           <br />
         </label>
@@ -124,6 +142,7 @@ function Forms() {
               <option value={item.id}> {item.display} </option>
             ))}
           </select>
+          <Loader isLoading={subjectsLoader} />
           <br />
           <br />
         </label>
@@ -141,11 +160,14 @@ function Forms() {
               <option value={item.id}> {item.display} </option>
             ))}
           </select>
+          <Loader isLoading={sectionLoader} />
           <br />
           <br />
         </label>
       </form>
       <button onClick={onSubmit}>Create </button>
+      <Loader isLoading={creatingStudentLoader} />
+
       <h1>Welcome{fullName}</h1>
     </div>
   );
