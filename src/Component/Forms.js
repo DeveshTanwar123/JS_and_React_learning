@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { api } from '../modules/endpoints';
 import { Loader } from '../modules/components';
+import moment from 'moment';
 
 function Forms() {
   const [name, setName] = useState('Devesh');
@@ -11,6 +12,7 @@ function Forms() {
   const [subjectsLoader, setSubjectsLoader] = useState();
   const [sectionLoader, setSectionLoader] = useState();
   const [creatingStudentLoader, setCreatingStudentLoader] = useState();
+  const [dob, setDob] = useState();
 
   //use event in section//
   const [selectedSection, setSelectedSection] = useState(2);
@@ -64,6 +66,15 @@ function Forms() {
     console.log(event.target.value);
     setName(event.target.value);
   };
+  const onChangeDob = (e) => {
+    const dob = e.target.value;
+    const dobMoment = moment(dob);
+    const dateDiff = dobMoment.diff(new Date(), 'years');
+    console.log(dobMoment, dateDiff);
+    if (dateDiff < -5) {
+      setDob(e.target.value);
+    }
+  };
 
   const validateForm = () => {
     if (!name) {
@@ -80,9 +91,10 @@ function Forms() {
     if (isFormValid) {
       const studentDetails = {
         name: name,
-        class: selectedClass,
+        className: selectedClass,
         subjects: selectedSubjects,
         section: selectedSection,
+        dob: dob,
       };
 
       setCreatingStudentLoader(true);
@@ -113,6 +125,7 @@ function Forms() {
           <br />
         </label>
         <label>
+          <input type="date" value={dob} onChange={onChangeDob} />
           Student class:
           <select
             id="studentClass"

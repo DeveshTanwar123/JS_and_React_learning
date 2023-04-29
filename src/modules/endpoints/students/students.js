@@ -19,6 +19,7 @@ class Students {
 
   createStudent(studentDetials) {
     this.studentList.push(studentDetials);
+    console.log(this.studentList);
     return endPoints.fetch('/getSubjectsListUrl', { ok: 'success' });
   }
 }
