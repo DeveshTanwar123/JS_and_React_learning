@@ -4,10 +4,10 @@ import { Loader } from '../modules/components';
 import moment from 'moment';
 
 function Forms() {
-  const [name, setName] = useState('Devesh');
+  const [name, setName] = useState();
   const [fullName, setFullName] = useState();
   //event use  in class selection//
-  const [selectedClass, setSelectedSlass] = useState(4);
+  const [selectedClass, setSelectedSlass] = useState();
   const [classLoader, setClassLoader] = useState();
   const [subjectsLoader, setSubjectsLoader] = useState();
   const [sectionLoader, setSectionLoader] = useState();
@@ -15,9 +15,9 @@ function Forms() {
   const [dob, setDob] = useState();
 
   //use event in section//
-  const [selectedSection, setSelectedSection] = useState(2);
+  const [selectedSection, setSelectedSection] = useState();
   //use event in Subjects//
-  const [selectedSubjects, setSelectedSubjects] = useState(1);
+  const [selectedSubjects, setSelectedSubjects] = useState();
 
   const onChangeStudentClass1 = (e) => {
     setSelectedSlass(e.target.value);
@@ -125,7 +125,9 @@ function Forms() {
           <br />
         </label>
         <label>
-          <input type="date" value={dob} onChange={onChangeDob} />
+          Date of Birth
+          <input type="date" value={dob} onChange={onChangeDob} /> <br />
+          <br />
           Student class:
           <select
             id="studentClass"
